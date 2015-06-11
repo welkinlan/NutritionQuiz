@@ -13,7 +13,7 @@ var onClick2 : OnClick;
 private var num : int = 0;
 var healthyFood : String[] = SharedData.healthyFood;
 var unhealthyFood : String[] = SharedData.unhealthyFood;
-var sum : int = 0;
+var score : int = 0;
 
 
 function Start () {
@@ -39,15 +39,16 @@ function Update () {
 function OnGUI(){
 	GUI.skin = skin;
 	if (buttonEnabled) {
-		if (GUI.Button(HelpClass.ScrRectCenter2(0.5,0.85,0.3,0.10),"Ok")) {
+		if (GUI.Button(HelpClass.ScrRectCenter2(0.5,0.8,0.2,0.10),"Ok")) {
 			//check correctness
 			if (onClick1.selected == true && choice1_name.text == healthyFood[num] ||
 			    onClick2.selected == true && choice2_name.text == healthyFood[num]){
-				sum++;
+				score++;
 			}
 			num++;	
 			//if done, go to result scene
 			if (num == 12) {
+				SharedData.score = score;
 				Application.LoadLevel(2);
 			}
 			//load next set of images
