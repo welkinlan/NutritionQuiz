@@ -43,7 +43,10 @@ function OnGUI(){
 			//check correctness
 			if (onClick1.selected == true && choice1_name.text == healthyFood[num] ||
 			    onClick2.selected == true && choice2_name.text == healthyFood[num]){
+				SharedData.writeLog(choice1_name.text + " vs. " + choice2_name.text, "Correct");
 				score++;
+			} else {
+				SharedData.writeLog(choice1_name.text + " vs. " + choice2_name.text, "Wrong");
 			}
 			num++;	
 			//if done, go to result scene
